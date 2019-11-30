@@ -28,7 +28,7 @@ Please press the 'Exit' button on the popup window instead of the red 'X' to clo
 VID_FOLDER = 'train_videos/'
 
 # Remote folder where we will be writing videos to
-AAC_FOLDER = 'AAC_Accuracy'
+AAC_FOLDER = 'AACC_Coord'
 SERVER_HOME_DIR = '~/{}/server/'.format(AAC_FOLDER)
 REMOTE_VID_FOLDER = '~/{}/server/training/videos/'.format(AAC_FOLDER)
 REMOTE_IMG_FOLDER = '~/{}/server/training/images/'.format(AAC_FOLDER)
@@ -165,7 +165,8 @@ class StartWindow(QMainWindow):
         #Start the MovieThread if user clicks "Capture" button
         #Set timer to timeout every 30 ms
         #Disable buttons during capturing
-        self.nameEntered = self.userName.text()
+        self.nameEntered = self.userName.text().replace(' ', '_')
+        self.userName.setText('')
         self.btnCapture.setEnabled(False)
         self.btnExit.setEnabled(False)
         self.statusUpdate.setText("Capturing...")
